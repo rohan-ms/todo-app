@@ -1,0 +1,44 @@
+doctype html 
+html
+    head 
+        title TODO 
+        link(rel='stylesheet' type='text/css' href='/style.css')
+        link(href='https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap' rel='stylesheet')
+    body
+        .container
+            .leftpane 
+                .lefthead
+                    h1 TODO
+                each task in tasks
+                    .leftcard
+                        .card_det
+                            h2 #{task.task}
+                        .check_card 
+                            a(href=`http://localhost:5000/todo/${task._id}`)
+                                span(class='checkmark')
+                                    .checkmark_circle
+                                    .checkmark_stem 
+                                    .checkmark_kick
+                    hr
+                   
+            .middlepane
+                .main 
+                    form(method='post' action='http://localhost:5000/todo')
+                        input(type='text' name='task' placeholder='Enter Task' required)
+                        button(type='submit') Add Task
+                    br 
+                    br 
+                    hr 
+                    br 
+                    a(href='http://localhost:5000/todo/deleteTodo')
+                        button Clear TODO List
+                    a(href='http://localhost:5000/todo/deleteCom')
+                        button Clear Completed List
+            .rightpane 
+                .righthead 
+                    h1 COMPLETED
+                each task in comTask
+                    .rightcard 
+                        h2 #{task.task}
+                    hr
+                
